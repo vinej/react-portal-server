@@ -1,14 +1,18 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
+  "name": "reactboardserver",
+  "version": "0.0.01",
+  "description": "A RESTfull service for ReactBoard",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jean-Yves Vinet",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/vinej/reactboardserver.git"
+  }
+  "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
