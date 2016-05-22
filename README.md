@@ -1,26 +1,26 @@
-# reactboardserver
+# react-portal-server
 
 ## Installation
 
 * install 'mongodb'
 * install 'Robomongo' to manage your database
 * launch 'mongod'
-* install 'reactboardserver'
+* install 'react-portal-server'
   * npm install
     * set your secret key in 'config.js'
     * set your connection string in 'index.js'
   * npm run dev
-* install 'reactboard'
+* install 'react-portal'
 
 ## Goal
 
-A REST server with Node.js and Express to use with 'reactboard'
+A REST server with Node.js and Express to use with 'react-portal'
 build with the help of Stephen Grider course "Advanced React with Redux" (excellent)
 
 For now the server is dealing with the authentification as describe by Stephen Grider
-and returns a list of hardcoded users to test the 'users' widget' of the 'reactboard'. 
+and returns a list of hardcoded users to test the 'users' widget' of the 'react-portal'. 
 
-See : 'reactboard' for more information
+See : 'react-portal' for more information
 
 
 
