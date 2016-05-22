@@ -8,49 +8,13 @@ function tokenForUser(user) {
 }
 
 exports.users = function(req, res, next) {
-  res.send(
-    [
-        { "_id" : "1", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "2", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "3", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "4", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "5", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "6", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "7", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "8", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "9", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "10", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "11", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "12", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "13", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "14", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "15", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "16", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "17", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "18", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "19", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "20", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "21", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "22", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "23", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "24", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "25", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "26", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "27", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "28", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "29", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "30", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "31", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "32", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-        { "_id" : "33", "email" : "jyvinet@hotmail.ca", "name" : "Jean-Yves"},
-        { "_id" : "34", "email" : "jyvinet2@hotmail.ca", "name" : "Na"},
-    ]
-  );
-  // User.find( {}, function(err, users) { 
-  //   res.send( 
-  //     users 
-  //     ); 
-  // });
+  list = [];
+  for(var i = 0; i < 100; i++) {
+    list.push(
+      { "_id" : `${i}`, "email" : `test${i}@hotmail.ca`, "name" : `My name${i}`}
+    );
+  }
+  res.send(list)
 }
 
 exports.signin = function(req, res, next) {
