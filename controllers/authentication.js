@@ -17,9 +17,12 @@ exports.users = function(req, res, next) {
   res.send(list)
 }
 
+exports.currentUser = '';
+
 exports.signin = function(req, res, next) {
   // User has already had their email and password auth'd
   // We just need to give them a token
+  //currentUser = req.user.email;
   res.send({ token: tokenForUser(req.user), name: req.user.name });
 }
 
@@ -48,6 +51,7 @@ exports.signup = function(req, res, next) {
       if (err) { return next(err); }
 
       // Repond to request indicating the user was created
+      currentUser = email;
       res.json({ token: tokenForUser(user) });
     });
   });
