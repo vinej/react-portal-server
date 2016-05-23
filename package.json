@@ -1,6 +1,6 @@
 {
-  "name": "reactboardserver",
-  "version": "0.0.01",
+  "name": "react-portal-server",
+  "version": "0.1.2",
   "description": "A RESTfull service for ReactBoard",
   "main": "index.js",
   "scripts": {
