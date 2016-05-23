@@ -1,6 +1,6 @@
 {
   "name": "react-portal-server",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A RESTfull service for ReactBoard",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "Jean-Yves Vinet",
   "repository" : {
     "type" : "git",
-    "url" : "https://github.com/vinej/reactboardserver.git"
+    "url" : "https://github.com/vinej/react-portal-server.git"
   },
   "license": "MIT",
   "dependencies": {
