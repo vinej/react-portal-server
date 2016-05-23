@@ -3,7 +3,7 @@ const Todo = require('../models/todo');
 exports.query = function(req, res, next) {
 	var filter = {};
 	if (req.query.filter) {
-		filter.desc = { '$regex' : '.*' + req.query.filter + '.*' }; 
+		filter.description = { '$regex' : '.*' + req.query.filter + '.*' }; 
 	}
 	Todo.find( filter, function(err, todos) {
 		if (err) { return next(err); }
@@ -34,7 +34,11 @@ exports.delete = function(req, res, next) {
 }
 
 exports.add = function(req, res, next) {
-	Todo( req.body ).save( function(err) {
+	var ptodo = req.body;
+	var todo = new Todo();
+	// keep only fields from the schema
+	fill(ptodo, todo);
+	Todo( todo ).save( function(err) {
 		if (err) { return next(err); }
 		res.status(200).json({status:"ok"});
 	});
@@ -42,13 +46,24 @@ exports.add = function(req, res, next) {
 
 exports.update = function(req, res, next) {
 	var ptodo = req.body;
+	console.log(ptodo);
 	Todo.findById( ptodo._id, function(err, todo) {
-		if (err || !todo || toto.length == 0) { return next(err); }
-		todo.date = ptodo.date;
-		todo.desc = ptodo.desc;
+		if (err || !todo || todo.length == 0) { return next(err); }
+		// update only fields from the schema
+		fill(ptodo, todo)
 		todo.save(function(err) {
 			if (err) { return next(err); }
 			res.status(200).json({status:"ok"});
 		});
 	});
+}
+
+fill = function(src, dst) {
+	dst.startDate = src.startDate;
+	dst.endDate = src.endDate;
+	dst.color = src.color;
+	dst.done = src.done;
+	dst.description = src.description;
+	dst.category = src.category;
+	dst.status = src.status;
 }
