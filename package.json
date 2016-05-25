@@ -1,7 +1,7 @@
 {
   "name": "react-portal-server",
   "version": "0.1.3",
-  "description": "A RESTfull service for ReactBoard",
+  "description": "A RESTfull service for React-Portal",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
