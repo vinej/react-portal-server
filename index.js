@@ -33,11 +33,3 @@ const server = http.createServer(app);
 server.listen(port);
 console.log('Server listening on:', port);
 
-// websocket.create(socketio, http);
-// const io = websocket.io();
-// io.on('connection', function(socket) {
-//   console.log('a user connected', socket);
-//   socket.on('disconnect', function(){
-//     console.log('user disconnected');
-//   });
-// });
