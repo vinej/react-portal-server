@@ -1,4 +1,6 @@
 const Authentication = require('./controllers/authentication');
+const checkAutorization = require('./autorization')
+
 const Todo = require('./controllers/todo');
 const Action = require('./controllers/action');
 
@@ -12,13 +14,16 @@ module.exports = function(app) {
   app.get('/', requireAuth, function(req, res, next) {
     res.send({ message: 'Super secret code is ABC123' });
   });
-  app.post('/signin', requireSignin, Authentication.signin);
-  app.post('/signup', Authentication.signup);
-  app.post('/action', Action.action);
-  app.get('/users', Authentication.users);
-  app.get('/todos', requireAuth, Todo.query);
-  app.get('/todos/:id', requireAuth, Todo.one);
-  app.post('/todos', requireAuth, Todo.add);
-  app.put('/todos', requireAuth, Todo.update);
-  app.delete('/todos/:id', requireAuth, Todo.delete);
+  app.post('/auth/signin', requireSignin, Authentication.signin);
+  app.post('/auth/signup', Authentication.signup);
+  app.post('/wss/emit', Action.emit);
+
+  app.all('/api/*', requireAuth, checkAutorization);
+
+  app.get('/api/users', Authentication.users);
+  app.get('/api/todos', Todo.query);
+  app.get('/api/todos/:id', Todo.one);
+  app.post('/api/todos', Todo.add);
+  app.put('/api/todos', Todo.update);
+  app.delete('/api/todos/:id', Todo.delete);
 }

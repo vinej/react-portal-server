@@ -9,7 +9,9 @@
   * npm install
     * set your secret key in 'config.js'
     * set your connection string in 'index.js'
-  * npm run dev
+  * npm run dev   : for the REST server
+  * npm run wss   : for the Websocket server
+  
 * install 'react-portal'
 
 ## Goal

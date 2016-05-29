@@ -22,7 +22,6 @@ wss.on("connection", function(ws) {
 
     , 10000
   )
-
   console.log("websocket connection open")
 
   ws.on("close", function() {

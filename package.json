@@ -1,6 +1,6 @@
 {
   "name": "react-portal-server",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A RESTfull service for React-Portal",
   "main": "index.js",
   "scripts": {
