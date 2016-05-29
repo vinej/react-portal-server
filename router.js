@@ -2,6 +2,7 @@ const Authentication = require('./controllers/authentication');
 const checkAutorization = require('./autorization')
 
 const Todo = require('./controllers/todo');
+const Emit = require('./controllers/emit');
 const Action = require('./controllers/action');
 
 const passportService = require('./services/passport');
@@ -16,10 +17,12 @@ module.exports = function(app) {
   });
   app.post('/auth/signin', requireSignin, Authentication.signin);
   app.post('/auth/signup', Authentication.signup);
-  app.post('/wss/emit', Action.emit);
+
+  app.post('/wss/emit', Emit.emit);
 
   app.all('/api/*', requireAuth, checkAutorization);
 
+  app.get('/api/actions', Action.actions);
   app.get('/api/users', Authentication.users);
   app.get('/api/todos', Todo.query);
   app.get('/api/todos/:id', Todo.one);
