@@ -40,9 +40,9 @@ exports.add = function(req, res, next) {
   var todo = new Todo();
   // keep only fields from the schema
   fill(ptodo, todo, req.user.email, req.user.project);
-  Todo( todo ).save( function(err) {
+  Todo( todo ).save( function(err, todo) {
     if (err) { return next(err); }
-    res.status(200).json({status:"ok"});
+    res.send(todo);
   });
 }
 
