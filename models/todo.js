@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Define our model
 const todoSchema = new Schema({
   userid      : { type: String },
-  project     : { type: String },
+  project     : { type: String,   default : 'all' },
   description : { type: String,   default : '' }, 
   startDate   : { type: Date,     default : Date.now },
   endDate     : { type: Date,     default : Date.now },

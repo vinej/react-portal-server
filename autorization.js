@@ -1,10 +1,4 @@
 var checkAutorization = function(req, res, next) {
-  // req.user.eamil contains theeamil of the user
-  // we need a mapping between the
-  // name of the route, the verb and the data
-  // req.user.email
-  // req.method : "Get/Post/Put/Delete"
-  // req.url :    "/entity"
   if (req.user) {
     email = req.user.email
     if (req.query.project) {
@@ -18,9 +12,8 @@ var checkAutorization = function(req, res, next) {
       req.user.language = 'en'
     }
 
-    // build an action with the following information
-    //   email, req.method, req.url 
-    // use a mapping or an algorithme
+    // IT'S NOT IMPLEMENTED YET, FOR NOW ONLY SHOWS AT THE CONSOLE
+    // THE INFORMATION THAT WILL BE USED TO CHECK THE SECURITY
     console.log(email, req.method, req.url, req.user.project, req.user.language);
 
     return next(null);
@@ -28,5 +21,4 @@ var checkAutorization = function(req, res, next) {
     return next('Error: user object is null');
   }
 }
-
 module.exports = checkAutorization;
