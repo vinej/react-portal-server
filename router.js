@@ -23,6 +23,7 @@ module.exports = function(app) {
   app.all('/api/*', requireAuth, checkAutorization);
 
   app.get('/api/actions', Action.actions);
+  app.get('/api/widgets', Todo.query);
   app.get('/api/users', Authentication.users);
   app.get('/api/todos', Todo.query);
   app.get('/api/todos/:id', Todo.one);
