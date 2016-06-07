@@ -39,7 +39,7 @@ exports.add = function(req, res, next) {
   var ptodo = req.body;
   var todo = new Todo();
   // keep only fields from the schema
-  fill(ptodo, todo, req.user.email, req.user.project);
+  todofill(ptodo, todo, req.user.email, req.user.project);
   Todo( todo ).save( function(err, todo) {
     if (err) { return next(err); }
     res.send(todo);
@@ -52,7 +52,7 @@ exports.update = function(req, res, next) {
   Todo.findById( ptodo._id, function(err, todo) {
     if (err || !todo || todo.length == 0) { return next(err); }
     // update only fields from the schema
-    fill(ptodo, todo, req.user.email, req.user.project)
+    todofill(ptodo, todo, req.user.email, req.user.project)
     todo.save(function(err) {
       if (err) { return next(err); }
       res.status(200).json({status:"ok"});
@@ -60,7 +60,7 @@ exports.update = function(req, res, next) {
   });
 }
 
-fill = function(src, dst, userid, project) {
+todofill = function(src, dst, userid, project) {
   dst.userid = userid;
   dst.project = project;
   dst.startDate = src.startDate;

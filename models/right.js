@@ -10,7 +10,4 @@ const rightSchema = new Schema({
 });
 
 // Create the model class
-const ModelClass = mongoose.model('right', rightSchema);
-
-// Export the model
-module.exports = ModelClass;
+module.exports = mongoose.model('right', rightSchema);

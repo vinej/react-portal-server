@@ -7,7 +7,6 @@ const actionSchema = new Schema({
   description : { type: String }
 });
 // Create the model class
-const ModelClass = mongoose.model('action', actionSchema);
+module.exports = mongoose.model('action', actionSchema);
 
-// Export the model
-module.exports = ModelClass;
+

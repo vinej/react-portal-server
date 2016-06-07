@@ -2,6 +2,7 @@ const Authentication = require('./controllers/authentication');
 const checkAutorization = require('./autorization')
 
 const Todo = require('./controllers/todo');
+const Dashboard = require('./controllers/dashboard');
 const Emit = require('./controllers/emit');
 const Action = require('./controllers/action');
 
@@ -23,8 +24,15 @@ module.exports = function(app) {
   app.all('/api/*', requireAuth, checkAutorization);
 
   app.get('/api/actions', Action.actions);
-  app.get('/api/widgets', Todo.query);
+
+  app.get('/api/dashboards', Dashboard.query);
+  app.get('/api/dashboards/:id', Dashboard.one);
+  app.post('/api/dashboards', Dashboard.add);
+  app.put('/api/dashboards', Dashboard.update);
+  app.delete('/api/dashboards/:id', Dashboard.delete);
+
   app.get('/api/users', Authentication.users);
+  
   app.get('/api/todos', Todo.query);
   app.get('/api/todos/:id', Todo.one);
   app.post('/api/todos', Todo.add);
