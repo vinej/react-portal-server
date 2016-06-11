@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define our model
 const widgetSchema = new Schema({
-  title       : { type: String },
+  name        : { type: String },
   i           : { type: String },
   x           : { type: Number },
   y           : { type: Number }, 
