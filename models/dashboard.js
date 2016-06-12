@@ -14,7 +14,7 @@ const widgetSchema = new Schema({
 // Define our model
 const dashboardSchema = new Schema({
   title       : { type: String },
-  user        : { type: String },
+  userid      : { type: String },
   project     : { type: String },
   widgets     : [widgetSchema] 
 });

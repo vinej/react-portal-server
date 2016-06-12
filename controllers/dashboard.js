@@ -39,7 +39,7 @@ exports.add = function(req, res, next) {
   var pdashboard = req.body;
   var dashboard = new Dashboard();
   // keep only fields from the schema
-  dbfill(pdashboard, dashboard, req.user.email, req.user.project);
+  dashboardfill(pdashboard, dashboard, req.user.email, req.user.project);
   Dashboard( dashboard ).save( function(err, dashboard) {
     if (err) { return next(err); }
     res.send(dashboard);
@@ -48,10 +48,11 @@ exports.add = function(req, res, next) {
 
 exports.update = function(req, res, next) {
   var pdashboard = req.body;
+  console.log(pdashboard)
   Dashboard.findById( pdashboard._id, function(err, dashboard) {
     if (err || !dashboard || dashboard.length == 0) { return next(err); }
     // update only fields from the schema
-    dbfill(pdashboard, dashboard, req.user.email, req.user.project);
+    dashboardfill(pdashboard, dashboard, req.user.email, req.user.project);
     dashboard.save(function(err) {
       if (err) { return next(err); }
       res.status(200).json({status:"ok"});
@@ -59,17 +60,19 @@ exports.update = function(req, res, next) {
   });
 }
 
-dbfill = function(src, dst, userid, project) {
+dashboardfill = function(src, dst, userid, project) {
   dst.userid = userid;
   dst.project = project;
   dst.title = src.title;
   dst.widgets = [];
-  var count = 1
-  src.widgets.forEach( function(widget) { 
-    // result internal reference
-    widget.i = "ref" + count;
-    count = count + 1;
-    delete widget['_id'];
-    dst.widgets.push(widget)
-  });
+  if (src.widgets && src.widgets.length > 0) {
+    var count = 1
+    src.widgets.forEach( function(widget) { 
+      // result internal reference
+      widget.i = "ref" + count;
+      count = count + 1;
+      delete widget['_id'];
+      dst.widgets.push(widget)
+    });
+  }
 }
