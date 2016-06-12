@@ -55,7 +55,7 @@ exports.update = function(req, res, next) {
     dashboardfill(pdashboard, dashboard, req.user.email, req.user.project);
     dashboard.save(function(err) {
       if (err) { return next(err); }
-      res.status(200).json({status:"ok"});
+      res.send(dashboard);
     });
   });
 }

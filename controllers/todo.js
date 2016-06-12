@@ -55,7 +55,7 @@ exports.update = function(req, res, next) {
     todofill(ptodo, todo, req.user.email, req.user.project)
     todo.save(function(err) {
       if (err) { return next(err); }
-      res.status(200).json({status:"ok"});
+      res.send(todo);
     });
   });
 }
