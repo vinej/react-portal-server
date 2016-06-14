@@ -3,6 +3,7 @@
 ## Installation
 * install 'nodejs'
 * install 'mongodb'
+* create the folder  c:\data\db
 * install 'robomongo' to manage your database
 * launch the driver 'mongod'
 * install 'react-portal-server'
