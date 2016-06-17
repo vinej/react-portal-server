@@ -64,6 +64,7 @@ dashboardfill = function(src, dst, userid, project) {
   dst.userid = userid;
   dst.project = project;
   dst.title = src.title;
+  dst.isHidden = src.isHidden;
   dst.widgets = [];
   if (src.widgets && src.widgets.length > 0) {
     var count = 1
