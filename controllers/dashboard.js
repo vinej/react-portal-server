@@ -25,7 +25,7 @@ exports.one = function(req, res, next) {
 exports.delete = function(req, res, next) {
   Dashboard.find( { _id: req.params.id }, function(err, dashboard) {
     if (err || !dashboard || dashboard.length == 0) { return next(err); }
-    dashboard.remove( { _id: req.params.id }, function(err) {
+    Dashboard.remove( { _id: req.params.id }, function(err) {
       if (err) { 
         res.status(400).send('delete error, unable to delete the id');    
       } else {
